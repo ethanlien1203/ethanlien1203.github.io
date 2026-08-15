@@ -38,6 +38,13 @@ nav {
 #nav-main .label {
     font-weight:bolder;
 }
+#nav-footer {
+    font-family:'stack-sans-text',monospace;
+    text-align:center;
+    position:absolute;
+    bottom:0px;
+    margin-left:15%;
+}
 .main {
     height:auto;
     margin-left:225px;

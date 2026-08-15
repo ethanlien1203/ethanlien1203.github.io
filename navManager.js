@@ -14,6 +14,9 @@ class SpecialNav extends HTMLElement {
                 <p class="label"><a href="/about/" title="About">About</a></p>
                 <p class="label"><a href="/contact/" title="Contact">Contact</a></p>
             </div>
+            <div id="nav-footer">
+                <p>&copy; Ethan Lien 2026</p>
+            </div>
         </nav>
         `
     }
