@@ -6,15 +6,36 @@
     <title> portfolio title</title>
     <base href="https://ethanlien1203.github.io">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <style>
+        .container {
+            width:100%;
+            display:grid;
+            grid-template-areas:"sidebar main";
+            grid-template-columns: 200px auto;
+        }
+        .sidebar {
+            grid-area:sidebar;
+            height:100vw;
+            background-color:lightcoral
+        }
+        .main {
+            grid-area:main;
+            height:100vw;
+            background-color:white
+        }
+    </style>
 </head>
 <body>
-    <div class="main">
-        <div class="left-nav" style="width:30%">
+    <div class="container">
+        <div class="sidebar">
             <div id="site-name">
-                <a href="/">Ethan Lien</a>
+                <a href=""><h1>Ethan Lien</h1></a>
             </div>
             <p>Projects</p>
             <a style="margin-left:15%" href="/projects/adsr/">ADSR_pedal</a>
+        </div>
+        <div class="main">
+
         </div>
     </div>
 </body>
