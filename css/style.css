@@ -1,4 +1,4 @@
-.sidenav {
+nav {
     height:100%;
     width:225px;
     position:fixed;
@@ -14,19 +14,29 @@
     text-align:center;
     padding:5px;
 }
-#site-name a:link,a:visited {
+#site-name a:link,a:visited,a:hover {
     color:black;
     text-decoration:none;
 }
-
-#nav {
+#nav-main {
     padding-left:10%;
     padding-right:10%;
     font-family:'Stack Sans Text', monospace;
     margin-top:5px auto;
 }
-#nav .tab {
+#nav-main a:link,a:visited {
+    color:black;
+    text-decoration: none;
+}
+#nav-main a:hover,a:active {
+    color:chartreuse;
+    text-decoration:none;
+}
+#nav-main .tab {
     margin-left:18%;
+}
+#nav-main .label {
+    font-weight:bolder;
 }
 .main {
     height:auto;
