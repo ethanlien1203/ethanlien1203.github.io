@@ -9,9 +9,9 @@
 
 #header-img {
     width:100%;
-    height:100%;
     background-size:cover;
     background-position-y:center;
+    position:absolute;
 }
 
 #header h1 {
