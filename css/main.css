@@ -25,9 +25,9 @@
 .section div {
     padding: 0px 75px;
 }
-.section p a:link,a:visited,a:active {
+.section div p a:link,a:visited,a:active {
     color:orangered;
 }
-.section p a:hover {
+.section div p a:hover {
     color:brown;
 }
