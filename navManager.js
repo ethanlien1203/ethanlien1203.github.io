@@ -5,7 +5,7 @@ class SpecialNav extends HTMLElement {
             <div id="site-name">
                 <a href="/"><h1>Ethan Lien</h1></a>
             </div>
-            <div id="nav-main">
+            <div id="nav-content">
                 <p class="label">Projects</p>
                 <p class="tab"><a href="/projects/adsr_pedal/">ADSR_pedal</a></p>
                 <p class="tab"><a href="/projects/bur/">Bruin Underwater Robotics</a></p>

@@ -7,24 +7,24 @@
     color:black;
     text-decoration:none;
 }
-#nav-main {
+#nav-content {
     padding-left:10%;
     padding-right:10%;
     font-family:'Stack Sans Text', monospace;
     margin-top:5px auto;
 }
-#nav-main a:link,a:visited {
+#nav-content a:link,a:visited {
     color:black;
     text-decoration: none;
 }
-#nav-main a:hover,a:active {
+#nav-content a:hover,a:active {
     color:chartreuse;
     text-decoration:none;
 }
-#nav-main .tab {
+#nav-content .tab {
     margin-left:18%;
 }
-#nav-main .label {
+#nav-content .label {
     font-weight:bolder;
 }
 #nav-footer {
