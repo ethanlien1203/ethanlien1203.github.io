@@ -3,12 +3,12 @@ class SpecialNav extends HTMLElement {
         this.innerHTML = `
         <nav>
             <div id="site-name">
-                <a href="" title="Home Page"><h1>Ethan Lien</h1></a>
+                <a href=""><h1>Ethan Lien</h1></a>
             </div>
             <div id="nav-main">
                 <p class="label">Projects</p>
-                <p class="tab"><a href="/projects/adsr_pedal/" title="ADSR_pedal">ADSR_pedal</a></p>
-                <p class="tab"><a href="/projects/bur/" title="BUR">Bruin Underwater Robotics</a></p>
+                <p class="tab"><a href="/projects/adsr_pedal/">ADSR_pedal</a></p>
+                <p class="tab"><a href="/projects/bur/">Bruin Underwater Robotics</a></p>
                 <!-- <p class="tab"><a href="">+ See all</a></p> -->
                 <p class="label"><a href="/resume/Ethan_Lien_resume_jun2026.pdf" target="_blank" title="Resume">Resume</a></p>
                 <p class="label"><a href="/about/" title="About">About</a></p>
