@@ -19,11 +19,8 @@
 }
 .section {
     font-family: 'Stack Sans Text',monospace;
-    /* padding:0px 75px; */
+    padding:0px 75px;
     overflow:auto;
-}
-.section div {
-    padding: 0px 75px;
 }
 main a:link,a:visited {
     color:orangered;
