@@ -3,7 +3,7 @@ class SpecialNav extends HTMLElement {
         this.innerHTML = `
         <nav>
             <div id="site-name">
-                <a href=""><h1>Ethan Lien</h1></a>
+                <a href="/"><h1>Ethan Lien</h1></a>
             </div>
             <div id="nav-main">
                 <p class="label">Projects</p>
