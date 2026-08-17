@@ -74,10 +74,19 @@
             <h1> Research</h1>
             <p> The core of the pedal will be the one presented in Moritx's Youtube video. 
                 However, there is an immediate issue with pulling it directly. The one that 
-                he uses expects a quasi-digital input that swings from 0-9V DC, which the 
+                he uses expects a digital input that swings from 0-9V DC, which the 
                 filter shapes into a cool waveform each oscillation. Upon further research, 
-                it appears that the raw output from an electric bass is <em>not</em> digital 
-                and only peaks at a voltage of around 100-300mV
+                the raw output from an electric bass is <em>not</em> digital and only peaks 
+                at a voltage of around 100-300mV. As such, there needs some to be some 
+                pre-processing before the input reaches the ADSR filter.
+            </p>
+            <p> We'll use a 9V DC power suppy to power our pedal, so we'll bias the signal 
+                around 4.5V to maximize our operating voltage. We do this by adding our input 
+                signal with a 4.5V source into a unity gain buffer. Our small signal still 
+                only operate with a 300mV amplitude. We will amplify it using a non-inverting 
+                amplifier scheme. We can use a simple opamp comparator to turn it into a 
+                digital signal. We'll compare it to the output of a potentiometer so that the 
+                can control the threshold voltage to our liking.
             </p>
         </div>
     </main>
