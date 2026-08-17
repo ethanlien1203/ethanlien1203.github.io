@@ -3,31 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> portfolio title</title>
+    <title>ADSR_pedal | Ethan Lien</title>
     <base href="https://ethanlien1203.github.io">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sideNav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        #header-img {
+            background-image:url('/images/adsr/test.jpg');
+            opacity:0.7;
+        }
+        #header-content {
+            font-size: 36px;
+            color:black;
+        }
+    </style>
 </head>
 <body>
-    <div class="sidenav">
-        <div id="site-name">
-            <a href=""><h1>Ethan Lien</h1></a>
+    <special-nav></special-nav>
+
+    <main>
+        <div id="header">
+            <div id="header-img"></div>
+            <div id="header-content">
+                <h1>ADSR_pedal</h1>
+            </div>
         </div>
-        <div id="nav">
-            <p class="label">Projects</p>
-            <p class="tab"><a href="/projects/adsr_pedal/">ADSR_pedal</a></p>
-            <p class="tab"><a href="">Bruin Underwater Robotics</a></p>
-            <!-- <p class="tab"><a href="">+ See all</a></p> -->
-            <p class="label"><a href="">Resume</a></p>
-            <p class="label"><a href="">About</a></p>
-            <p class="label"><a href="">Contact</a></p>
-        </div> 
-    </div>
-    <div class="main">
-        <p>egg salad</p>
-    </div>
+        <hr>
+        <div class="section">
+            <h1>Motivation</h1>
+            <p> I like playing the electric bass. Something that I've 
+                I've always found cool are effect pedals, which basically 
+                allow you to change the sound of your instrument at the press 
+                of a button. It hit me that these are typically just analog 
+                circuits that filter your guitar signal is a cool way. In 
+                theory, I've picked up enough knowledge from my Analog 
+                Circuits classes to figure out how these things work and design one 
+                myself.
+            </p>
+        </div>
+        <div class="section">
+            <h1> Goals</h1>
+            <p> So I want to create a pedal. My first thought is to determine 
+                what type of sound I want to produce. Of course the basic filters 
+                (e.g. passive RLC) would be simple to achieve, only requiring 2-3 
+                components. However, these wouldn't necessarily change the timbre/mood 
+                of the sound, merely changing the volume (and phase) depending on the 
+                pitch of the note.
+            </p>
+            <p>
+                Thus, it seems like a cooler option would be to use active circuitry 
+                instead. This isn't a baseless thought to have, either. 
+                <a href="https://www.jimdunlop.com/mxr-bass-envelope-filter/">This 
+                pedal</a> that I have been eyeballing uses a handful of active 
+                components to make a really cool sound. Another inspiration of mine is 
+                the synthesizer Youtuber Moritz Klein, who has great videos going through 
+                the development of keyboard synthesizer mods. In particular, he has 
+                a <a href="https://youtu.be/aGFb7JbTdNU?si=tP4xQ3aC8H7Ti367">great video</a> 
+                going through the creation of a similar filter.
+            </p>
+            <p> So, what I want to do is create that filter that operates upon the knowledge 
+                I have picked up from my analog circuits courses.
+            </p>
+        </div>
+        <div class="section">
+            <h1> Research</h1>
+            <p> The core of the pedal will be the one presented in Moritx's Youtube video. 
+                However, there is an immediate issue with pulling it directly. The one that 
+                he uses expects a quasi-digital input that swings from 0-9V DC, which the 
+                filter shapes into a cool waveform each oscillation. Upon further research, 
+                it appears that the raw output from an electric bass is <em>not</em> digital 
+                and only peaks at a voltage of around 100-300mV
+            </p>
+        </div>
+    </main>
+
+    <script src="/navManager.js"></script>
 </body>
 </html>
