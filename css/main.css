@@ -37,3 +37,6 @@ main a:hover,a:active {
 .col {
     float:left;
 }
+figcaption {
+    font-size:13px;
+}

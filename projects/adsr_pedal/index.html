@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADSR_pedal | Ethan Lien</title>
-    <base href="https://ethanlien1203.github.io">
+    <!-- <base href="https://ethanlien1203.github.io"> -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -66,12 +66,12 @@
                     <p>
                         Thus, it seems like a cooler option would be to use active circuitry 
                         instead. This isn't a baseless thought to have, either. 
-                        <a href="https://www.jimdunlop.com/mxr-bass-envelope-filter/">This 
+                        <a href="https://www.jimdunlop.com/mxr-bass-envelope-filter/" target="_blank">This 
                         pedal</a> that I have been eyeballing uses a handful of active 
                         components to make a really cool sound. Another inspiration of mine is 
                         the synthesizer Youtuber Moritz Klein, who has great videos going through 
                         the development of keyboard synthesizer mods. In particular, he has 
-                        a <a href="https://youtu.be/aGFb7JbTdNU?si=tP4xQ3aC8H7Ti367">great video</a> 
+                        a <a href="https://youtu.be/aGFb7JbTdNU?si=tP4xQ3aC8H7Ti367" target="_blank">great video</a> 
                         going through the creation of a similar filter.
                     </p>
                     <p> So, what I want to do is create that filter that operates upon the knowledge 
@@ -116,24 +116,72 @@
             </div>
         </div>
         <div class="section">
-            <h2>Simulation</h2>
             <div class="row">
                 <div class="col">
+                    <h2>Simulation</h2>
                     <p> Before I commit to this design, it would be wise to determine if this is a viable design. 
                         I will be using LTspice as my software of choice to simulate this circuit. I start by 
                         implementing a power supply filter, which stabilizes the 9V signal and provides a 4.5V 
                         net as well. As our stand-in for the input bass signal, a 300mV-amplitude sinusoid will 
-                        be used and multiple frequencies from 40-640Hz will be tested (this represents the lowest 
-                        fundamental frequency of the bass and extending to the second harmonic of the upper range 
-                        of the bass). Our initial simulation will have all potentiometers set to their center value.
+                        be used and multiple frequencies from 40-400Hz will be tested (representing the range 
+                        of the bass).
                     </p>
                 </div>
             </div>
-            <div class="row" style="height:auto">
-                <div class="col" style="width:40%">
+            <div class="row" style="height:auto;display:flex;align-items:center;justify-content:center">
+                <div class="col" style="width:40%;float:left">
                     <figure>
-                        <img src="/images/adsr/sims_1.png">
+                        <img src="/images/adsr/sims_1.png" alt="Default simulation results" style="width:100%">
                         <figcaption style="text-align:center"> Simulation with default potentiometer settings.</figcaption>
+                    </figure>
+                </div>
+                <div class="col" style="width:40%;float:right">
+                    <figure>
+                        <img src="/images/adsr/sims_2.png" alt="Adjusted simulation results" style="width:100%">
+                        <figcaption style="text-align:center"> Simulation with adjusted RC filter settings.</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p> With potentiometers set to their median ("default") values, the filter is successful for 
+                        frequencies between 40-100Hz. This is a good sign, as this represents the range of the lower 
+                        three strings of the bass. However, we see that the output is clipped for the 400Hz simulation 
+                        as a result of a low-pass RC filter within the circuit. However, by adjusting the potentiometer 
+                        in this filter we see successful results, though it does alter the shape of the waveform.
+                    </p>
+                    <p> The simulations also indicate that the pedal will have a nominal current draw of around 11.5mA, 
+                        which is acceptable.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="col">
+                    <h2> PCB Design</h2>
+                    <p> PCB design was done in KiCad 9.0. A key feature that I wanted to implement was a modular pedal 
+                        design, where I could design a singular face plate where different filters can be swapped out. A 
+                        design choice that I have made was to integrate only the potentiometers, LED indicators, and 
+                        power/signal interfaces onto the face plate. This was with the intention that the face plate 
+                        circuitry be as simple as possible. This leaves the power and ADSR filter as a separate breakout 
+                        board. However, in future iterations, I would actually prefer to move the power filtering onto 
+                        the face plate itself, as the current configuration requires that all future filter modules to 
+                        include power filtering as well.
+                    </p>
+                    <p> In an effort to reduce costs, I wanted to combine both the face and filter in the same PCB layout. 
+                        I was aware of panelization as a method to fabricate multiple boards at scale. However, because I 
+                        was working at such a small scale (5 units), full panelization would not be necessary. Instead I 
+                        borrowed a technique and implemented "mouse bites" between the two boards so that they could be 
+                        fabricated as one, rather than as two separate projects.
+                    </p>
+                </div>
+            </div>
+            <div class="row" style="display:flex;justify-content:center;align-items:center">
+                <div class="col" style="width:80%">
+                    <figure>
+                        <img src="/images/adsr/kicad_pcb.png" alt="PCB layout" style="width:100%">
+                        <figcaption style="text-align:center;font-size:16px">KiCad PCB layout</figcaption>
                     </figure>
                 </div>
             </div>
