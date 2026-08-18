@@ -35,59 +35,108 @@
         </div>
         <hr>
         <div class="section">
-            <h1>Motivation</h1>
-            <p> I like playing the electric bass. Something that I've 
-                I've always found cool are effect pedals, which basically 
-                allow you to change the sound of your instrument at the press 
-                of a button. It hit me that these are typically just analog 
-                circuits that filter your guitar signal is a cool way. In 
-                theory, I've picked up enough knowledge from my Analog 
-                Circuits classes to figure out how these things work and design one 
-                myself.
-            </p>
+            <div class="row">
+                <div class="col">
+                    <h2>Motivation</h2>
+                <!-- </div>
+                <div class="col"> -->
+                    <p> I like playing the electric bass. Something that I've 
+                        I've always found cool are effect pedals, which basically 
+                        allow you to change the sound of your instrument at the press 
+                        of a button. It hit me that these are typically just analog 
+                        circuits that filter your guitar signal is a cool way. In 
+                        theory, I've picked up enough knowledge from my Analog 
+                        Circuits classes to figure out how these things work and design one 
+                        myself.
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="section">
-            <h1> Goals</h1>
-            <p> So I want to create a pedal. My first thought is to determine 
-                what type of sound I want to produce. Of course the basic filters 
-                (e.g. passive RLC) would be simple to achieve, only requiring 2-3 
-                components. However, these wouldn't necessarily change the timbre/mood 
-                of the sound, merely changing the volume (and phase) depending on the 
-                pitch of the note.
-            </p>
-            <p>
-                Thus, it seems like a cooler option would be to use active circuitry 
-                instead. This isn't a baseless thought to have, either. 
-                <a href="https://www.jimdunlop.com/mxr-bass-envelope-filter/">This 
-                pedal</a> that I have been eyeballing uses a handful of active 
-                components to make a really cool sound. Another inspiration of mine is 
-                the synthesizer Youtuber Moritz Klein, who has great videos going through 
-                the development of keyboard synthesizer mods. In particular, he has 
-                a <a href="https://youtu.be/aGFb7JbTdNU?si=tP4xQ3aC8H7Ti367">great video</a> 
-                going through the creation of a similar filter.
-            </p>
-            <p> So, what I want to do is create that filter that operates upon the knowledge 
-                I have picked up from my analog circuits courses.
-            </p>
+            <div class="row">
+                <div class="col">
+                    <h2> Goals</h2>
+                    <p> So I want to create a pedal. My first thought is to determine 
+                        what type of sound I want to produce. Of course the basic filters 
+                        (e.g. passive RLC) would be simple to achieve, only requiring 2-3 
+                        components. However, these wouldn't necessarily change the timbre/mood 
+                        of the sound, merely changing the volume (and phase) depending on the 
+                        pitch of the note.
+                    </p>
+                    <p>
+                        Thus, it seems like a cooler option would be to use active circuitry 
+                        instead. This isn't a baseless thought to have, either. 
+                        <a href="https://www.jimdunlop.com/mxr-bass-envelope-filter/">This 
+                        pedal</a> that I have been eyeballing uses a handful of active 
+                        components to make a really cool sound. Another inspiration of mine is 
+                        the synthesizer Youtuber Moritz Klein, who has great videos going through 
+                        the development of keyboard synthesizer mods. In particular, he has 
+                        a <a href="https://youtu.be/aGFb7JbTdNU?si=tP4xQ3aC8H7Ti367">great video</a> 
+                        going through the creation of a similar filter.
+                    </p>
+                    <p> So, what I want to do is create that filter that operates upon the knowledge 
+                        I have picked up from my analog circuits courses.
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="section">
-            <h1> Research</h1>
-            <p> The core of the pedal will be the one presented in Moritx's Youtube video. 
-                However, there is an immediate issue with pulling it directly. The one that 
-                he uses expects a digital input that swings from 0-9V DC, which the 
-                filter shapes into a cool waveform each oscillation. Upon further research, 
-                the raw output from an electric bass is <em>not</em> digital and only peaks 
-                at a voltage of around 100-300mV. As such, there needs some to be some 
-                pre-processing before the input reaches the ADSR filter.
-            </p>
-            <p> We'll use a 9V DC power suppy to power our pedal, so we'll bias the signal 
-                around 4.5V to maximize our operating voltage. We do this by adding our input 
-                signal with a 4.5V source into a unity gain buffer. Our small signal still 
-                only operate with a 300mV amplitude. We will amplify it using a non-inverting 
-                amplifier scheme. We can use a simple opamp comparator to turn it into a 
-                digital signal. We'll compare it to the output of a potentiometer so that the 
-                can control the threshold voltage to our liking.
-            </p>
+            <h1> Development</h1>
+            <div class="row">
+                <h2> Research</h2>
+            </div>
+            <div class="row">
+                <div class="col" style="width:60%;height:auto">
+                    <p> The core of the pedal will be the one presented in Moritx's Youtube video. 
+                        However, there is an immediate issue with pulling it directly. The one that 
+                        he uses expects a digital input that swings from 0-9V DC, which the 
+                        filter shapes into a cool waveform each oscillation. Upon further research, 
+                        the raw output from an electric bass is <em>not</em> digital and only peaks 
+                        at a voltage of around 100-300mV. As such, there needs some to be some 
+                        pre-processing before the input reaches the ADSR filter.
+                    </p>
+                    <p> We'll use a 9V DC power suppy to power our pedal, so we'll bias the signal 
+                        around 4.5V to maximize our operating voltage. We do this by adding our input 
+                        signal with a 4.5V source into a unity gain buffer. Our small signal still 
+                        only operate with a 300mV amplitude. We will amplify it using a non-inverting 
+                        amplifier scheme. We can use a simple opamp comparator to turn it into a 
+                        digital signal. We'll compare it to the output of a potentiometer so that the 
+                        can control the threshold voltage to our liking.
+                    </p>
+                </div>
+                <img src="/images/adsr/LTSspice_envelope.png" style="width:40%;height:auto;padding-left:15px">
+            </div>
+            <div class="row">
+                <p> This new digital signal can be run through Klein's ADSR circuit. One final modification 
+                    we need to do is to adjust the output voltage. Klein's filter will produce a signal that 
+                    swings from 0-9V and we want to produce a signal that is similar in scale to the input 
+                    signal. To achieve this, we use a potentiometer and voltage divider to scale down the 
+                    signal to a reasonable level.
+                </p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Simulation</h2>
+            <div class="row">
+                <div class="col">
+                    <p> Before I commit to this design, it would be wise to determine if this is a viable design. 
+                        I will be using LTspice as my software of choice to simulate this circuit. I start by 
+                        implementing a power supply filter, which stabilizes the 9V signal and provides a 4.5V 
+                        net as well. As our stand-in for the input bass signal, a 300mV-amplitude sinusoid will 
+                        be used and multiple frequencies from 40-640Hz will be tested (this represents the lowest 
+                        fundamental frequency of the bass and extending to the second harmonic of the upper range 
+                        of the bass). Our initial simulation will have all potentiometers set to their center value.
+                    </p>
+                </div>
+            </div>
+            <div class="row" style="height:auto">
+                <div class="col" style="width:40%">
+                    <figure>
+                        <img src="/images/adsr/sims_1.png">
+                        <figcaption style="text-align:center"> Simulation with default potentiometer settings.</figcaption>
+                    </figure>
+                </div>
+            </div>
         </div>
     </main>
 

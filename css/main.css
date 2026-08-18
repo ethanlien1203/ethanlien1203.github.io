@@ -28,3 +28,12 @@ main a:link,a:visited {
 main a:hover,a:active {
     color:brown;
 }
+.row {
+    width:100%;
+    height:auto;
+    display:flex;
+    /* justify-content:center; */
+}
+.col {
+    float:left;
+}
