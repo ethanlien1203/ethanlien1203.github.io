@@ -22,16 +22,17 @@
     padding:0px 75px;
     overflow:auto;
 }
-main a:link,a:visited {
-    color:orangered;
+.section a:link,a:visited {
+    color:red;
 }
-main a:hover,a:active {
-    color:brown;
+.section a:hover,a:active {
+    color:orangered;
 }
 .row {
     width:100%;
     height:auto;
     display:flex;
+    align-items:center;
     /* justify-content:center; */
 }
 .col {
@@ -39,4 +40,5 @@ main a:hover,a:active {
 }
 figcaption {
     font-size:13px;
+    text-align:center;
 }
