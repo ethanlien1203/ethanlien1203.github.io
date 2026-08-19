@@ -10,7 +10,7 @@ class SpecialNav extends HTMLElement {
                 <p class="tab"><a href="/projects/adsr_pedal/">ADSR_pedal</a></p>
                 <p class="tab"><a href="/projects/bur/">Bruin Underwater Robotics</a></p>
                 <!-- <p class="tab"><a href="">+ See all</a></p> -->
-                <p class="label"><a href="/resume/Ethan_Lien_resume_jun2026.pdf" target="_blank" title="Resume">Resume</a></p>
+                <p class="label"><a href="/documents/Ethan_Lien_resume_jun2026.pdf" target="_blank" title="Resume">Resume</a></p>
                 <p class="label"><a href="/about/" title="About">About</a></p>
                 <p class="label"><a href="/contact/" title="Contact">Contact</a></p>
             </div>
