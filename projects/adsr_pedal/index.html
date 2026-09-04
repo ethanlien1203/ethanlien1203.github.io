@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADSR_pedal | Ethan Lien</title>
-    <base href="https://ethanlien1203.github.io">
+    <!-- <base href="https://ethanlien1203.github.io"> -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -184,6 +184,113 @@
                         <figcaption style="font-size:16px">KiCad PCB layout</figcaption>
                     </figure>
                 </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <h1>Initial Product</h1>
+            </div>
+            <div class="row" style="justify-content:center">
+                <div class="col" style="width:50%">
+                    <p> I quickly 3D-modelled a wall structure for the front panel and other jacks to mount to. Once 
+                        all of the components were soldered to the face plate, the pedal strongly matched with my 
+                        intended vision for the final product. Let's talk about the pros and cons of the pedal.
+                    </p>
+                    <h3> Pros</h3>
+                    <ul>
+                        <li> The pedal looks really cool</li>
+                    </ul>
+                    <h3> Cons</h3>
+                    <ul>
+                        <li> The pedal does not work at all</li>
+                    </ul>
+                </div>
+                <div class="col" style="width:25%;float:left;padding-inline:15px">
+                    <img src="/images/adsr/pedal_front.jpg" alt="ADSR pedal: front" style="width:100%">
+                </div>
+                <div class="col" style="width:25%;float:right;padding-inline:15px">
+                    <img src="/images/adsr/pedal_back.jpg" alt="ADSR pedal: back" style="width:100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    When I switch to the pedal, the output is pure silence. This holds regardless of how hard I 
+                    play the bass or what values I set the dials to. My first instinct is that something is 
+                    shorting the output signal to ground. However, investigations into the filter and face plate 
+                    indicate that this is not the issue. Perhaps it is an issue with the connections on the face 
+                    plate, but yet again it's components are behaving without issue. Unfortunately, this means 
+                    that the issue likely lies with the filter itself.
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row"> 
+                <div class="col">
+                    <h2> Troubleshooting</h2>
+                    <p> The issue is likely as such: at some point in the filter, the signal is saturating to one 
+                        of the rail voltages of an op amp. As such, the resultant signal is a pure DC signal and 
+                        there is no AC signal at the output of the pedal. Because many op amps are used in the 
+                        filter, locating where this failure is occuring can be difficult. I am opting to recreate 
+                        the filter on a bread board, progressively moving through the circuit and altering sections 
+                        as needed.
+                    </p>
+                    <p> An interesting conundrum that I have is that I am limited to a multimeter as my sole 
+                        tool for measurement. Luckily, because I am only working in the audible frequency range 
+                        I am able to just use my ears to determine how I am affecting my signal.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="width:70%;">
+                    <h3> Power filter</h3>
+                    <p> RC filter resistor was causing clicking when switching to the pedal. 
+                        No background hum was audible during testing and was deemed redundant. This component was 
+                        removed.
+                    </p>
+                    <figure style="justify-self:center;">
+                        <img src="/images/adsr/power_BNA.png" alt="Power filter alterations" style="width:100%">
+                        <figcaption> Power filter alterations</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row" style="justify-content:right">
+                <div class="col" style="width:70%;float:right">
+                    <h3> Input buffer</h3>
+                    <p> Input buffer circuit was largely successful, though specific values for the bias resistor 
+                        and buffer capacitor were changed for component availability. 
+                    </p>
+                    <figure style="justify-self:center;">
+                        <img src="/images/adsr/buffer_BNA.png" alt="Input buffer alterations" style="width:100%">
+                        <figcaption> Input buffer alterations</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="width:70%">
+                    <h3> Signal amplifier</h3>
+                    <p> This is likely where the main issue resided. My initial assumption was that the signal coming 
+                        from the bass would have a peak of 100-300mV. As such, I would be able to amplify it by around 
+                        10 times before I would see saturation from the op amp output. However, in testing I could 
+                        only amplify it by 1.5 times before the signal reached the rail voltage. Thus, I suspect that the 
+                        leading cause of failure is the bass providing a signal with a greater amplitude that anticipated, 
+                        or I have a fundamental misuderstanding of the functional limits of an op amp (both are possible, 
+                        but I am limited by the tools at hand do determine which is true).
+                    </p>
+                    <p> To correct for this, I am adding a trimpot so that I can adjust the gain to its maximum possible 
+                        value before clipping occurs. Moreover, I am adding a bias resistor to limit the current entering 
+                        the op amp and reducing the buffer capacitance so I can use a film capacitor instead.
+                    </p>
+                    <figure style="justify-self:center;">
+                        <img src="/images/adsr/ampd_BNA.png" alt="Input amplifier alterations" style="width:100%">
+                        <figcaption> Input amplifier alterations</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row" style="justify-content:center;">
+                <h1 style="font-size:60px"> More to come!</h1>
             </div>
         </div>
     </main>
