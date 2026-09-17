@@ -42,3 +42,7 @@ figcaption {
     font-size:13px;
     text-align:center;
 }
+
+.bottom-buffer {
+    padding-bottom:50px
+}
